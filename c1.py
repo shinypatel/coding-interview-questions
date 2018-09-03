@@ -14,7 +14,7 @@ def rev_c_str(s):     # q2
     return s + '\0'
 
 
-def rmDuplicateChars(s):    # q3
+def rm_duplicate_chars(s):    # q3
     return ''.join(OrderedDict.fromkeys(s))
 
 
@@ -47,7 +47,7 @@ def str_rot(s1, s2):    # q8
     return len(s1) == len(s2) and s2 in s1 + s1
 
 
-s = ' aa bc '
+# s = ' aa bc '
 # print(unique_chars(s))
 # print(rev_c_str(s))
 # print(rmDuplicateChars(s))
@@ -56,10 +56,10 @@ s = ' aa bc '
 # print(anagrams(s1, s2))
 # print(replace_whitespace(s))
 
-m, n = 3, 3
-mat = [[1 for j in range(3)] for i in range(3)]
-mat[0][2], mat[1][1] = 0, 0
+# m, n = 3, 3
+# mat = [[1 for j in range(m)] for i in range(n)]
+# mat[0][2], mat[1][1] = 0, 0
 # print(mod_mat(m, n, mat))
 
-s1, s2 = 'we', 'awe'
-print(str_rot(s1, s2))
+# s1, s2 = 'we', 'awe'
+# print(str_rot(s1, s2))
