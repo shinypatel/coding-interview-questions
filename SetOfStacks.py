@@ -1,4 +1,4 @@
-class Node():
+class Node:
     def __init__(self):
         self.prev = None
         self.next = None
@@ -11,7 +11,6 @@ class SetOfStacks:    # c3 q3
         self.tail = None
         self.length = 0
         self.threshold = t
-
 
     def push(self, el):
         curr = self.head
@@ -33,7 +32,6 @@ class SetOfStacks:    # c3 q3
             self.tail = node
             self.length += 1
 
-
     def pop(self):
         curr = self.tail
         if curr:
@@ -47,7 +45,6 @@ class SetOfStacks:    # c3 q3
                     self.tail = curr.prev
                 self.length -= 1
             return el
-
 
     def pop_at(self, idx):
         curr = self.head
@@ -70,7 +67,6 @@ class SetOfStacks:    # c3 q3
                 self.length -= 1
             return el
 
-
     def print(self):
         curr = self.head
         while curr:
@@ -79,7 +75,7 @@ class SetOfStacks:    # c3 q3
 
 
 s = SetOfStacks(3)
-for i in range(8):
-    s.push(i)
+for j in range(8):
+    s.push(j)
 print(s.pop_at(0))
 s.print()

@@ -13,15 +13,20 @@ class Stack:
             return self.stack.pop(-1)
 
     def peek(self):
-        return self.stack[-1]
+        if self.stack:
+            return self.stack[-1]
 
     def min(self):  # q2
-        if self.min:
-            return self.min
+        return self.min
+
+    def is_empty(self):
+        if len(self.stack):
+            return False
+        else:
+            return True
 
     def print(self):
-        for el in self.stack:
-            print(el)
+        print(self.stack)
 
 
 def q1(n):
@@ -44,3 +49,70 @@ def q1(n):
     s2.print()
     print('stack 3:')
     s3.print()
+
+
+def reverse(s1):
+    s2 = Stack()
+    while s1.peek() is not None:
+        s2.push(s1.pop())
+    return s2
+
+
+class Queue:    # q5
+    def __init__(self):
+        self.queue = Stack()
+
+    def enqueue(self, el):
+        self.queue.push(el)
+
+    def dequeue(self):
+        self.queue = reverse(self.queue)
+        el = self.queue.pop()
+        self.queue = reverse(self.queue)
+        return el
+
+    def print(self):
+        self.queue.print()
+
+
+def q5():
+    q = Queue()
+    for j in range(4):
+        q.enqueue(j)
+    print(q.dequeue())
+    q.print()
+
+
+def sort_stack(s1):   # q6
+    s2 = Stack()
+    while not s1.is_empty():
+        curr = s1.pop()
+        s3 = Stack()
+        print('s2:')
+        s2.print()
+        print('s3:')
+        # stack s2 is in descending order i.e. [-1, 1]
+        while not s2.is_empty():
+            prev = s2.pop()
+            print('prev:', prev)
+            print('curr:', curr)
+            # construct stack s3 in ascending order i.e. [1, -1]
+            if prev < curr:
+                prev, curr = curr, prev
+            s3.push(prev)
+            s3.print()
+        s3.push(curr)
+        s3.print()
+        print('\n')
+        s2 = reverse(s3)
+    return s2
+
+
+s = Stack()
+s.push(5)
+s.push(0)
+s.push(1)
+s.push(-1)
+s.print()
+print('\n\n')
+sort_stack(s).print()
