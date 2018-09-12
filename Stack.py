@@ -83,14 +83,15 @@ def q5():
     q.print()
 
 
+# http://prntscr.com/ktf5uv
 def sort_stack(s1):   # q6
     s2 = Stack()
     while not s1.is_empty():
         curr = s1.pop()
-        s3 = Stack()
+        s2, s3 = reverse(s2), Stack()
         print('s2:')
         s2.print()
-        print('s3:')
+        print('\ns3 construction:')
         # stack s2 is in descending order i.e. [-1, 1]
         while not s2.is_empty():
             prev = s2.pop()
@@ -103,8 +104,8 @@ def sort_stack(s1):   # q6
             s3.print()
         s3.push(curr)
         s3.print()
-        print('\n')
-        s2 = reverse(s3)
+        print('\n\n')
+        s2 = s3
     return s2
 
 
