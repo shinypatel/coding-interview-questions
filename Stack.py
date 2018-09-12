@@ -44,5 +44,3 @@ def q1(n):
     s2.print()
     print('stack 3:')
     s3.print()
-
-
