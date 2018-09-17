@@ -1,8 +1,8 @@
 n = 4
 adj_mat = [[0, 1, 1, 0],
-           [1, 0, 0, 1],
-           [1, 0, 0, 0],
-           [0, 1, 0, 0]]
+           [0, 0, 0, 1],
+           [0, 0, 0, 0],
+           [0, 0, 0, 0]]
 visited = [0 for i in range(n)]
 
 
@@ -14,8 +14,8 @@ def dfs(i):
             dfs(j)
 
 
-def run_dfs():
-    for i in range(n):
+def run_dfs():  # q2
+    for i in range(1, 2):
         if not visited[i]:
             dfs(i)
 
@@ -39,5 +39,5 @@ def run_bfs():
             bfs(i)
 
 
-# run_dfs()
-run_bfs()
+run_dfs()
+# run_bfs()
