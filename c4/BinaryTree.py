@@ -78,7 +78,7 @@ def size(node):
 
 def height(node):
     if not node:
-        return 0
+        return -1
     return max(height(node.left), height(node.right)) + 1
 
 
@@ -115,9 +115,41 @@ def binary_tree(arr):   # q3
     return root
 
 
-arr = []
-for i in range(6):
-    arr.append(i)
-bt = binary_tree(arr)
-print('ht:', height(bt), '\n')
-bt.print_in_order()
+''' nodes at same depth can have diff heights
+    https://stackoverflow.com/questions/2603692/what-is-the-difference-between-tree-depth-and-height '''
+
+
+def depth(node, d=-1):     # tail recursion
+    if not node:
+        return d
+    d += 1
+    return max(depth(node.left, d), depth(node.right, d))
+
+
+def depth_lists(q, depths):  # q4
+    d = []      # nodes at depth d
+    node = q.pop(0)
+    while node:
+        d.append(node.val)
+        if node.left:
+            q.append(node.left)
+        if node.right:
+            q.append(node.right)
+        node = q.pop(0)
+
+    if len(q):
+        q.append(None)      # separate depths by None in queue
+        depths = depth_lists(q, depths)
+
+    depths.insert(0, d)
+    return depths
+
+
+bt = Node(4)
+bt.insert(3)
+bt.insert(6)
+bt.insert(1)
+bt.insert(5)
+bt.insert(2)
+
+print(depth_lists([bt, None], []))
