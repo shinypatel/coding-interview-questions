@@ -1,1 +1,1 @@
-my sol
+My solutions
