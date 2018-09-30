@@ -25,7 +25,7 @@ def selection_sort(arr):    # outer loop - gives pos; inner loop - finds el
 
 
 # https://stackoverflow.com/questions/18761766/mergesort-python
-def merge(arr1, arr2):
+def merge(arr1, arr2):      # q1
     result = []
     i, j = 0, 0
     while i < len(arr1) and j < len(arr2):
