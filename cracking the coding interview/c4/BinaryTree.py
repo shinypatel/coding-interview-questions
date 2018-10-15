@@ -23,16 +23,16 @@ class Node:
                 self.right = Node(v)
                 self.right.parent = self
 
-    def node(self, v):
+    def find_node(self, v):
         if v == self.val:
             return self
         elif v < self.val and self.left:
-            return self.left.node(v)
+            return self.left.find_node(v)
         elif self.right:
-            return self.right.node(v)
+            return self.right.find_node(v)
 
     def in_order_successor(self, v):  # q5
-        node = self.node(v)
+        node = self.find_node(v)
         successor = None
         if node.right:
             node = node.right
