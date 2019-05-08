@@ -20,10 +20,15 @@ class DLinkedList:
         self.len += 1
 
     def add(self, pos, val):
-        if self.len <= pos:
+        node = Node(val)
+        if pos == 0:
+            self.head.prev = node
+            node.next = self.head
+            self.head = node
+            self.len += 1
+        elif self.len <= pos:
             self.append(val)
         else:
-            node = Node(val)
             count, curr = 0, self.head
             while count != pos - 1:
                 curr = curr.next
