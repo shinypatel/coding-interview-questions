@@ -12,22 +12,22 @@ class DLinkedList:
     def append(self, val):
         node = Node(val)
         if self.len == 0:
-            self.head, self.tail = node, node
+            self.head = node
         else:
             self.tail.next = node
             node.prev = self.tail
-            self.tail = node
+        self.tail = node
         self.len += 1
 
     def add(self, pos, val):
         node = Node(val)
-        if pos == 0:
+        if self.len <= pos:
+            self.append(val)
+        elif pos == 0:
             self.head.prev = node
             node.next = self.head
             self.head = node
             self.len += 1
-        elif self.len <= pos:
-            self.append(val)
         else:
             count, curr = 0, self.head
             while count != pos - 1:
@@ -66,13 +66,12 @@ class DLinkedList:
         #     curr = curr.prev
         #     count += 1
         ############################
-        idx = self.len - 1 - (n - 1)
         count, curr = 0, self.head
-        while curr and count != idx:
+        while curr:
+            if count == self.len - n:
+                return curr.val
             curr = curr.next
             count += 1
-        if count == idx and curr:
-            return curr.val
 
     def find_starting_loop_val(self):   # q5
         values, start_val, curr = set(), None, self.head
@@ -89,14 +88,14 @@ class DLinkedList:
     def rm_dup_wo_buff(self):   # q1
         curr = self.head
         while curr:
-            prev_node, node = curr, curr.next
+            node = curr.next
             while node:
                 if node.val == curr.val:
-                    prev_node.next = node.next
+                    node.prev.next = node.next
                     if node.next:
-                        node.next.prev = prev_node
-                else:
-                    prev_node = node
+                        node.next.prev = node.prev
+                    else:
+                        self.tail = node.prev
                 node = node.next
             curr = curr.next
 
@@ -131,13 +130,13 @@ l1 = DLinkedList()
 l2 = DLinkedList()
 l3 = DLinkedList()
 
+l1.append(1)
 l1.append(3)
 l1.append(1)
-l1.append(5)
 
-l2.append(5)
-l2.append(9)
-l2.append(2)
+# l2.append(5)
+# l2.append(9)
+# l2.append(2)
 
-l3.sum(l1, l2)
-l3.print()
+# l3.sum(l1, l2)
+# l3.print()
