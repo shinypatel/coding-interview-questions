@@ -20,7 +20,7 @@ def selection_sort(arr):    # outer loop - gives pos; inner loop - finds el
             if arr[j] < smallest:
                 smallest, idx = arr[j], j
         del arr[idx]
-        arr.add_str(i, smallest)
+        arr.insert(i, smallest)
     return arr
 
 
