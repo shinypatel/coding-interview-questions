@@ -10,7 +10,10 @@ class Stack:
 
     def pop(self):
         if self.stack:
-            return self.stack.pop(-1)
+            return self.stack.pop()
+
+    def size(self):
+        return len(self.stack)
 
     def peek(self):
         if self.stack:
@@ -20,7 +23,7 @@ class Stack:
         return self.min
 
     def is_empty(self):
-        if len(self.stack):
+        if self.stack:
             return False
         else:
             return True
