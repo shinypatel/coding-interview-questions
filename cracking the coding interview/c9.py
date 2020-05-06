@@ -66,7 +66,7 @@ def insertion_sort(arr):    # outer loop - gives el; inner loop - finds pos
     for i in range(n):
         for j in range(i):
             if arr[j] > arr[i]:
-                arr.add_str(j, arr.pop(i))
+                arr.insert(j, arr.pop(i))
     return arr
 
 
