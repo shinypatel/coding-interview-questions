@@ -14,8 +14,13 @@ def rev_c_str(s):     # q2
     return s + '\0'
 
 
-def rm_duplicate_chars(s):    # q3
-    return ''.join(OrderedDict.fromkeys(s))
+def rm_duplicate_chars(s1):    # q3
+    # s2 = ''
+    # for c in s1:
+    #     if c not in s2:
+    #         s2 += c
+    # return s2
+    return ''.join(OrderedDict.fromkeys(s1))
 
 
 def anagrams(s1, s2):   # q4
